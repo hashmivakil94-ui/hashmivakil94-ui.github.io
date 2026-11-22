@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vakil Ahmad Hashmi | Microsoft 365 &amp; Intune Engineer</title>
+  <meta name="description" content="Portfolio of Vakil Ahmad Hashmi - IT professional with 7+ years in Microsoft 365, Azure, Intune, Exchange Online, and security &amp; compliance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+:root{
+  --bg:#050806;
+  --bg-2:#0b120d;
+  --card:#101a13;
+  --green:#1f8a4c;
+  --green-dark:#0f5a30;
+  --green-glow:#2ecc71;
+  --text:#e8efe9;
+  --muted:#9db0a2;
+  --radius:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
+  padding:16px 4%;background:linear-gradient(to bottom,rgba(0,0,0,.9),transparent);transition:background .3s}
+.nav.scrolled{background:#000;box-shadow:0 2px 14px rgba(0,0,0,.7)}
+.nav-left{display:flex;align-items:center;gap:36px}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;color:var(--green-glow);text-shadow:0 0 14px rgba(46,204,113,.4)}
+.nav-links{display:flex;gap:22px}
+.nav-links a{font-size:.9rem;color:#cfd9d2;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:#fff;font-weight:600}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:5px;font-weight:600;font-size:1rem;border:0;cursor:pointer;transition:.2s}
+.btn-small{padding:8px 18px;font-size:.85rem;background:var(--green);color:#fff}
+.btn-small:hover{background:var(--green-glow);color:#000}
+.btn-primary{background:var(--green-glow);color:#000}
+.btn-primary:hover{background:#fff}
+.btn-secondary{background:rgba(120,150,130,.35);color:#fff;backdrop-filter:blur(4px)}
+.btn-secondary:hover{background:rgba(120,150,130,.55)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:space-between;padding:110px 4% 80px;gap:40px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;
+  background:
+   radial-gradient(circle at 78% 35%,rgba(31,138,76,.45),transparent 45%),
+   radial-gradient(circle at 10% 90%,rgba(15,90,48,.5),transparent 40%),
+   linear-gradient(120deg,#000 0%,#06130a 55%,#0b2a17 100%)}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(46,204,113,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(46,204,113,.05) 1px,transparent 1px);
+  background-size:48px 48px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+.hero-fade{position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(to top,var(--bg),transparent);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:640px}
+.badge{display:inline-block;font-size:.75rem;letter-spacing:2px;font-weight:700;color:var(--green-glow);border:1px solid var(--green);padding:4px 12px;border-radius:3px;margin-bottom:18px}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.2rem,8vw,6.2rem);line-height:1;letter-spacing:2px;margin-bottom:8px}
+.hero-role{font-size:1.5rem;color:var(--green-glow);font-weight:600;margin-bottom:16px;min-height:2.2rem}
+.hero-role::after{content:"|";margin-left:3px;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-desc{color:#cbd6ce;font-size:1.1rem;margin-bottom:28px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.hero-stats{display:flex;gap:34px;flex-wrap:wrap}
+.hero-stats div{font-size:2rem;font-weight:700;color:var(--green-glow)}
+.hero-stats b{font-weight:700}
+.hero-stats span{display:block;font-size:.8rem;color:var(--muted);font-weight:500}
+
+.hero-photo-wrap{position:relative;z-index:2;flex-shrink:0;margin-right:4%}
+.hero-photo{position:relative;width:340px;height:340px;border-radius:50%;overflow:hidden;
+  border:4px solid var(--green);box-shadow:0 0 0 8px rgba(31,138,76,.18),0 0 70px rgba(46,204,113,.35);background:#0b120d}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+/* crops the baked-in #OPENTOWORK ring if the photo still contains it */
+.photo-zoom{transform:scale(1.5);transform-origin:55% 33%}
+.initials{display:none;position:absolute;inset:0;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:7rem;color:var(--green-glow)}
+.hero-photo.no-photo .initials{display:flex}
+
+/* SECTIONS */
+.section{padding:50px 4%}
+.row-title{font-size:1.6rem;font-weight:700;margin-bottom:18px;display:flex;align-items:baseline;gap:12px}
+.row-title::before{content:"";width:5px;height:1.6rem;background:var(--green-glow);border-radius:2px;align-self:center}
+.row-title small{font-size:.85rem;color:var(--green-glow);font-weight:500;opacity:.8}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:34px}
+.about-text p{margin-bottom:14px;color:#c6d2c9;font-size:1.05rem}
+.about-text b{color:var(--green-glow)}
+.about-cards{display:grid;gap:12px}
+.info-card{display:flex;gap:14px;align-items:center;background:var(--card);padding:14px 18px;border-radius:var(--radius);border-left:3px solid var(--green)}
+.info-card span{font-size:1.5rem}
+.info-card small{display:block;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:1px}
+.info-card b{font-size:.95rem;word-break:break-word}
+
+/* NETFLIX ROW */
+.row-wrap{position:relative}
+.row{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;padding:12px 4px 26px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.arrow{position:absolute;top:0;bottom:26px;width:48px;z-index:5;border:0;background:rgba(0,0,0,.65);color:#fff;font-size:2.4rem;cursor:pointer;opacity:0;transition:.2s}
+.row-wrap:hover .arrow{opacity:1}
+.arrow:hover{background:rgba(31,138,76,.7)}
+.arrow.left{left:-4%;border-radius:0 6px 6px 0}
+.arrow.right{right:-4%;border-radius:6px 0 0 6px}
+
+.card{flex:0 0 260px;scroll-snap-align:start;background:linear-gradient(160deg,var(--card),#08100b);border:1px solid #1b2c20;border-radius:var(--radius);padding:24px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:scale(1.07);border-color:var(--green);box-shadow:0 12px 35px rgba(0,0,0,.8),0 0 25px rgba(46,204,113,.18);z-index:3}
+.card-icon{font-size:2rem;margin-bottom:10px}
+.card h3{font-size:1.05rem;margin-bottom:6px}
+.card p{font-size:.9rem;color:var(--muted)}
+
+/* POSTERS (projects) */
+.poster{flex:0 0 300px;scroll-snap-align:start;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid #1b2c20;transition:transform .25s,box-shadow .25s}
+.poster:hover{transform:scale(1.08);box-shadow:0 14px 40px rgba(0,0,0,.85),0 0 28px rgba(46,204,113,.2);z-index:3}
+.poster-art{height:150px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:3.6rem;letter-spacing:3px;color:rgba(255,255,255,.92)}
+.g1{background:linear-gradient(135deg,#052e16,#16a34a)}
+.g2{background:linear-gradient(135deg,#000,#14532d)}
+.g3{background:linear-gradient(135deg,#0b3d20,#22c55e)}
+.g4{background:linear-gradient(135deg,#031a0d,#15803d)}
+.g5{background:linear-gradient(135deg,#0a0a0a,#166534)}
+.g6{background:linear-gradient(135deg,#052e16,#4ade80)}
+.poster-body{padding:16px 18px 20px}
+.poster-body h3{font-size:1.05rem;margin-bottom:6px}
+.poster-body p{font-size:.88rem;color:var(--muted);margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:.7rem;padding:3px 9px;border-radius:20px;background:rgba(31,138,76,.2);color:var(--green-glow);border:1px solid rgba(46,204,113,.3)}
+
+/* SKILLS */
+.skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.skill-group{background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid #1b2c20}
+.skill-group h3{font-size:1rem;margin-bottom:12px;color:var(--green-glow)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{padding:6px 13px;font-size:.82rem;border-radius:4px;background:#050a07;border:1px solid #20382a;transition:.2s}
+.chips span:hover{background:var(--green);border-color:var(--green-glow);transform:translateY(-2px)}
+
+/* REPOS */
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.repo-card{background:var(--card);border:1px solid #1b2c20;border-radius:var(--radius);padding:20px;transition:.25s;display:block}
+a.repo-card:hover{transform:translateY(-5px);border-color:var(--green-glow);box-shadow:0 10px 30px rgba(46,204,113,.15)}
+.repo-card h3{color:var(--green-glow);font-size:1.05rem;margin-bottom:6px;word-break:break-all}
+.repo-card p{color:var(--muted);font-size:.9rem;margin-bottom:14px;min-height:2.6rem}
+.repo-meta{display:flex;gap:16px;font-size:.8rem;color:var(--muted);flex-wrap:wrap}
+.repo-meta .lang::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--green-glow);margin-right:6px}
+.repo-card.skeleton,.repo-card.empty{color:var(--muted);grid-column:1/-1;text-align:center;padding:34px}
+.repo-note{margin-top:14px;font-size:.85rem;color:var(--muted)}
+.repo-note a{color:var(--green-glow);text-decoration:underline}
+
+/* CONTACT */
+.contact-box{text-align:center;padding:50px 20px;border-radius:var(--radius);background:linear-gradient(135deg,#06130a,#0f3d22);border:1px solid #1d5a35}
+.contact-box h3{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:2px}
+.contact-box p{color:#b7cabb;margin:6px 0 24px}
+.contact-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+.footer{text-align:center;padding:36px 4%;color:var(--muted);font-size:.85rem;border-top:1px solid #111}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{flex-direction:column-reverse;justify-content:center;text-align:center;padding-top:100px}
+  .hero-actions,.hero-stats{justify-content:center}
+  .hero-photo{width:240px;height:240px}
+  .hero-photo-wrap{margin-right:0}
+  .about-grid{grid-template-columns:1fr}
+  .arrow{display:none}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#000;padding:16px 4%;gap:14px}
+  .nav-links.open{display:flex}
+  .burger{display:block}
+}
+
+</style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <div class="nav-left">
+      <a href="#home" class="logo">VAKIL</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#repositories">Repositories</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-small" href="mailto:hashmivakil94@gmail.com">Hire Me</a>
+      <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="badge">PORTFOLIO &bull; 7+ YEARS EXPERIENCE</span>
+      <h1>Vakil Ahmad Hashmi</h1>
+      <p class="hero-role" id="typed">Microsoft 365 &amp; Intune Engineer</p>
+      <p class="hero-desc">
+        Results-driven IT professional specializing in Microsoft 365, Azure, Exchange Online and Endpoint Manager (Intune) &mdash;
+        securing and managing enterprise environments with <strong>10,000+ endpoints</strong>.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">&#9654; View Projects</a>
+        <a href="#about" class="btn btn-secondary">&#9432; More Info</a>
+      </div>
+      <div class="hero-stats">
+        <div><b data-count="7">0</b>+<span>Years Experience</span></div>
+        <div><b data-count="10000">0</b>+<span>Endpoints Managed</span></div>
+        <div><b data-count="3">0</b><span>Platforms: Win / Android / iOS</span></div>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+        <img src="photo.jpg" alt="Vakil Ahmad Hashmi" class="photo-zoom" onerror="this.style.display='none';this.parentNode.classList.add('no-photo')" />
+        <span class="initials">VA</span>
+      </div>
+    </div>
+    <div class="hero-fade"></div>
+  </section>
+
+  <main>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <h2 class="row-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I am a results-driven IT professional with <b>7+ years</b> of experience in IT Administration, Infrastructure Support and Cloud Operations,
+            specializing in Microsoft 365, Azure Cloud Services and Enterprise Device Management.
+          </p>
+          <p>
+            I have built strong expertise in Microsoft Endpoint Manager (Intune), Azure AD / Entra ID and modern workplace technologies,
+            with hands-on experience in cloud &amp; hybrid Intune implementations, Windows Autopilot deployments and end-to-end device lifecycle management.
+            I have managed large-scale enterprise environments with <b>10,000+ endpoints</b>, ensuring secure, compliant and efficient operations.
+          </p>
+          <p>
+            Known as a quick learner, team player and ownership-driven professional, I focus on delivering impactful results
+            and driving business success through technology.
+          </p>
+        </div>
+        <div class="about-cards">
+          <div class="info-card"><span>&#128188;</span><div><small>Company</small><b>Sureworks Infotech Pvt Ltd</b></div></div>
+          <div class="info-card"><span>&#127891;</span><div><small>Education</small><b>Board of Technical Education, UP (BTEUP)</b></div></div>
+          <div class="info-card"><span>&#128205;</span><div><small>Location</small><b>New Delhi, India</b></div></div>
+          <div class="info-card"><span>&#9993;</span><div><small>Email</small><b>hashmivakil94@gmail.com</b></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT I DO (row) -->
+    <section class="section" id="focus">
+      <h2 class="row-title">What I Do Best</h2>
+      <div class="row-wrap">
+        <button class="arrow left" aria-label="Scroll left">&#8249;</button>
+        <div class="row">
+          <article class="card">
+            <div class="card-icon">&#9729;</div>
+            <h3>Cloud-First Solutions</h3>
+            <p>Design and implement secure, scalable cloud-first solutions using Microsoft 365 &amp; Azure.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#128640;</div>
+            <h3>Device Modernization</h3>
+            <p>Lead Lean-to-Modern migrations and modernize device fleets with Autopilot and Intune.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#9993;</div>
+            <h3>Mail Flow &amp; Compliance</h3>
+            <p>Manage mail flow, security and compliance configurations across enterprise environments.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#128241;</div>
+            <h3>MDM &amp; MAM Policies</h3>
+            <p>Deploy and optimize Intune policies for Windows, Android and iOS devices.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#9881;</div>
+            <h3>Automation</h3>
+            <p>Drive operational excellence using PowerShell and monitoring tools.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">&#128274;</div>
+            <h3>Security Focus</h3>
+            <p>BitLocker, MFA, Conditional Access, RBAC and Privileged Identity Management (PIM).</p>
+          </article>
+        </div>
+        <button class="arrow right" aria-label="Scroll right">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <h2 class="row-title">Skills &amp; Tech Stack</h2>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Microsoft 365 &amp; Identity</h3>
+          <div class="chips">
+            <span>Microsoft 365</span><span>Exchange Online</span><span>Azure AD / Entra ID</span>
+            <span>Teams</span><span>SharePoint (SPO)</span><span>OneDrive (ODB)</span><span>Copilot</span><span>G-Suite</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Endpoint Management</h3>
+          <div class="chips">
+            <span>Microsoft Intune</span><span>Autopilot</span><span>MDM</span><span>MAM</span>
+            <span>Windows / Android / iOS</span><span>Intune Migration</span><span>MDE</span><span>MDO</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Security &amp; Compliance</h3>
+          <div class="chips">
+            <span>BitLocker</span><span>MFA</span><span>Conditional Access</span><span>RBAC</span>
+            <span>PIM</span><span>Mimecast</span><span>Proofpoint</span><span>Information Security</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Cloud, Tools &amp; Automation</h3>
+          <div class="chips">
+            <span>Azure</span><span>AWS</span><span>Cloudflare</span><span>Power BI</span>
+            <span>PowerShell</span><span>Ansible</span><span>Cisco</span><span>Datto</span><span>Windows Terminal</span><span>GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <h2 class="row-title">Projects <small>Featured work</small></h2>
+      <div class="row-wrap">
+        <button class="arrow left" aria-label="Scroll left">&#8249;</button>
+        <div class="row">
+          <article class="poster">
+            <div class="poster-art g1"><span>10K+</span></div>
+            <div class="poster-body">
+              <h3>Enterprise Endpoint Management</h3>
+              <p>Secure, compliant day-to-day operation of a 10,000+ endpoint environment through Microsoft Intune.</p>
+              <div class="tags"><span>Intune</span><span>MDM</span><span>Compliance</span></div>
+            </div>
+          </article>
+          <article class="poster">
+            <div class="poster-art g2"><span>&#9889;</span></div>
+            <div class="poster-body">
+              <h3>Lean-to-Modern Migration</h3>
+              <p>Device modernization initiative moving legacy-managed devices to cloud-managed Intune.</p>
+              <div class="tags"><span>Intune Migration</span><span>Azure AD</span></div>
+            </div>
+          </article>
+          <article class="poster">
+            <div class="poster-art g3"><span>AP</span></div>
+            <div class="poster-body">
+              <h3>Windows Autopilot Deployment</h3>
+              <p>Zero-touch device provisioning and end-to-end device lifecycle management.</p>
+              <div class="tags"><span>Autopilot</span><span>Intune</span><span>Windows</span></div>
+            </div>
+          </article>
+          <article class="poster">
+            <div class="poster-art g4"><span>&#128274;</span></div>
+            <div class="poster-body">
+              <h3>Zero-Trust Security Hardening</h3>
+              <p>BitLocker, MFA, Conditional Access, RBAC and PIM to protect data in modern workplaces.</p>
+              <div class="tags"><span>Conditional Access</span><span>PIM</span><span>MFA</span></div>
+            </div>
+          </article>
+          <article class="poster">
+            <div class="poster-art g5"><span>&#9993;</span></div>
+            <div class="poster-body">
+              <h3>Mail Flow &amp; Email Security</h3>
+              <p>Exchange Online mail flow, anti-phishing and compliance across enterprise tenants.</p>
+              <div class="tags"><span>Exchange Online</span><span>Mimecast</span><span>Proofpoint</span></div>
+            </div>
+          </article>
+          <article class="poster">
+            <div class="poster-art g6"><span>PS</span></div>
+            <div class="poster-body">
+              <h3>PowerShell Automation</h3>
+              <p>Scripts and monitoring to automate admin tasks and boost operational efficiency.</p>
+              <div class="tags"><span>PowerShell</span><span>Automation</span></div>
+            </div>
+          </article>
+        </div>
+        <button class="arrow right" aria-label="Scroll right">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- REPOSITORIES (live from GitHub) -->
+    <section class="section" id="repositories">
+      <h2 class="row-title">GitHub Repositories <small id="repoCount"></small></h2>
+      <div class="repo-grid" id="repoGrid">
+        <div class="repo-card skeleton">Loading repositories&hellip;</div>
+      </div>
+      <p class="repo-note">
+        Pulled live from <a href="https://github.com/hashmivakil94-ui" target="_blank" rel="noopener">github.com/hashmivakil94-ui</a>.
+        New repositories appear here automatically.
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2 class="row-title">Contact</h2>
+      <div class="contact-box">
+        <h3>Let&rsquo;s work together</h3>
+        <p>Open to on-site, hybrid and remote opportunities in Delhi, India.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="mailto:hashmivakil94@gmail.com">&#9993; Email Me</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/vakil-ahmad-ba76a9402/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-secondary" href="https://github.com/hashmivakil94-ui" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Vakil Ahmad Hashmi &bull; Built with HTML, CSS &amp; JS &bull; Hosted on GitHub Pages</p>
+  </footer>
+
+  <script>
+(function () {
+  const GITHUB_USER = "hashmivakil94-ui";
+
+  // Sticky nav colour change
+  const nav = document.getElementById("nav");
+  window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 40));
+
+  // Mobile menu
+  const burger = document.getElementById("burger");
+  const links = document.getElementById("navLinks");
+  burger.addEventListener("click", () => links.classList.toggle("open"));
+  links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
+
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Typing effect for role
+  const roles = [
+    "Microsoft 365 & Intune Engineer",
+    "Azure & Entra ID Specialist",
+    "Endpoint Management Expert",
+    "Security & Compliance Enthusiast"
+  ];
+  const typed = document.getElementById("typed");
+  let r = 0, c = 0, del = false;
+  function type() {
+    const word = roles[r];
+    typed.textContent = word.slice(0, c);
+    if (!del && c < word.length) { c++; setTimeout(type, 70); }
+    else if (!del) { del = true; setTimeout(type, 1600); }
+    else if (c > 0) { c--; setTimeout(type, 35); }
+    else { del = false; r = (r + 1) % roles.length; setTimeout(type, 300); }
+  }
+  type();
+
+  // Counter animation
+  function animateCount(el) {
+    const target = +el.dataset.count;
+    const start = performance.now(), dur = 1600;
+    (function step(now) {
+      const p = Math.min((now - start) / dur, 1);
+      el.textContent = Math.floor(target * (1 - Math.pow(1 - p, 3))).toLocaleString();
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  }
+  document.querySelectorAll("[data-count]").forEach(animateCount);
+
+  // Row arrows (Netflix style)
+  document.querySelectorAll(".row-wrap").forEach(wrap => {
+    const row = wrap.querySelector(".row");
+    wrap.querySelector(".arrow.left").addEventListener("click", () => row.scrollBy({ left: -row.clientWidth * 0.8, behavior: "smooth" }));
+    wrap.querySelector(".arrow.right").addEventListener("click", () => row.scrollBy({ left: row.clientWidth * 0.8, behavior: "smooth" }));
+  });
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".section").forEach(s => { s.classList.add("reveal"); io.observe(s); });
+
+  // Active nav link
+  const sections = [...document.querySelectorAll("main section, #home")];
+  window.addEventListener("scroll", () => {
+    let cur = "home";
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 140) cur = s.id; });
+    links.querySelectorAll("a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + cur));
+  });
+
+  // Live GitHub repositories
+  const grid = document.getElementById("repoGrid");
+  const count = document.getElementById("repoCount");
+  const esc = s => String(s).replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+
+  fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=30`)
+    .then(res => { if (!res.ok) throw new Error(res.status); return res.json(); })
+    .then(repos => {
+      repos = repos.filter(r => !r.fork);
+      if (!repos.length) {
+        grid.innerHTML = '<div class="repo-card empty">No public repositories yet &mdash; more coming soon.</div>';
+        return;
+      }
+      count.textContent = `${repos.length} public`;
+      grid.innerHTML = repos.map(r => `
+        <a class="repo-card" href="${esc(r.html_url)}" target="_blank" rel="noopener">
+          <h3>${esc(r.name)}</h3>
+          <p>${esc(r.description || "No description provided.")}</p>
+          <div class="repo-meta">
+            ${r.language ? `<span class="lang">${esc(r.language)}</span>` : ""}
+            <span>&#9733; ${r.stargazers_count}</span>
+            <span>&#9095; ${r.forks_count}</span>
+            <span>Updated ${new Date(r.updated_at).toLocaleDateString()}</span>
+          </div>
+        </a>`).join("");
+    })
+    .catch(() => {
+      grid.innerHTML = `<a class="repo-card empty" href="https://github.com/${GITHUB_USER}?tab=repositories" target="_blank" rel="noopener">View my repositories on GitHub &rarr;</a>`;
+    });
+})();
+
+</script>
+</body>
+</html>
